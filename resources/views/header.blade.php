@@ -127,6 +127,32 @@
         ::placeholder {
             text-transform: uppercase;
         };
+
+        .date {
+            position: relative;
+            width: 150px; height: 20px;
+            color: white;
+        }
+
+        .date:before {
+            position: absolute;
+            top: 3px; left: 3px;
+            content: attr(data-date);
+            display: inline-block;
+            color: black;
+        }
+
+        .date::-webkit-datetime-edit, input::-webkit-inner-spin-button, input::-webkit-clear-button {
+            display: none;
+        }
+
+        .date::-webkit-calendar-picker-indicator {
+            position: absolute;
+            top: 3px;
+            right: 0;
+            color: black;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -135,18 +161,30 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+            <form class="m-login__form m-form" action="{{ route('register') }}" method="POST" id="register-form">
+                <div class="modal-body">
+                    @csrf
+
+                    <input type="hidden" name="existed_id">
+
+                    <div class="form-group">
+                        <input class="form-control" type="email" placeholder="Email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="password" placeholder="Password" name="password" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
       </div>
     </div>

@@ -67,6 +67,14 @@ $(document).ready(function() {
     	// }
 	});
 
+	$(".date").on("change", function() {
+	    this.setAttribute(
+	        "data-date",
+	        moment(this.value, "YYYY-MM-DD")
+	        .format( this.getAttribute("data-date-format") )
+	    )
+	}).trigger("change")
+
 	$(document).on("keydown", "form", function(event) { 
 	    return event.key != "Enter";
 	});

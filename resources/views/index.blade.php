@@ -53,44 +53,42 @@
               }
         </style>
         <?php
-            $arrRayon = array ("Pusat", 
-                        "JIS",
-                        "Sency",
-                        "1A",
-                        "1B",
-                        "1C",
-                        "1D",
-                        "1E",
-                        "1F",
-                        "1G",
-                        "1H",
-                        "1I",
-                        "CK 1",
-                        "CK 2",
-                        "CK 3",
-                        "CK 4",
-                        "CK 5",
-                        "CK 7",
-                        "CK 8",
-                        "CK 9",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
-                        "7",
-                        "8",
-                        "9",
-                        "10",
-                        "11",
-                        "12",
-                        "13",
-                        "14",
-                        "15",
-                        "17",
-                        "18",
-                        "19",
-                        "70"
-                        )
+            $arrRayon = array ("Aruna 1", 
+                        "Aruna 2",
+                        "Aruna 3",
+                        "Aruna 4",
+                        "Aruna 5",
+                        "Baranangsiang 1",
+                        "Baranangsiang 2",
+                        "Baranangsiang 3",
+                        "Baranangsiang 4",
+                        "Baranangsiang 5",
+                        "Gedebage",
+                        "Regency 1",
+                        "Regency 2",
+                        "Regency 3",
+                        "Regency 4",
+                        "Regency 5",
+                        "Piset 1",
+                        "Piset 2",
+                        "Piset 3",
+                        "Soekarno Hatta 1",
+                        "Soekarno Hatta 2",
+                        "Soekarno Hatta 3",
+                        "Soekarno Hatta 4",
+                        "Yello",
+                        "Lainnya"
+                        );
+
+            $arrIbadah = array ( "Aruna 08.00",
+                        "Aruna 10.30",
+                        "Aruna 15.00",
+                        "Aruna 17.30",
+                        "Baranangsiang 08.00",
+                        "Baranangsiang 10.30",
+                        "Baranangsiang 15.00",
+                        "Baranangsiang 17.30",
+                        );
         ?>
         <div class="m-grid m-grid--hor m-grid--root m-page">
             <div class="m-login m-login--singin  m-login--5" id="m_login" >
@@ -111,26 +109,47 @@
 
                                     <input type="hidden" name="existed_id">
 
+                                    <div class="form-group m-form__group additional-info">
+                                        <input class="form-control m-input" type="text" placeholder="No. KAJ" name="kaj" required>
+                                    </div>
+
+                                    <div class="form-group m-form__group additional-info">
+                                        <input class="form-control m-input" type="text" placeholder="Nama Lengkap" name="name" required>
+                                    </div>
+
                                     <div class="form-group m-form__group">
                                         <input class="form-control m-input" type="email" placeholder="Email" name="email" required>
                                     </div>
 
                                     <div class="form-group m-form__group additional-info">
-                                        <input class="form-control m-input" type="text" placeholder="Full Name" name="name" required>
+                                        <input class="form-control m-input" type="text" placeholder="No.HP/WA" name="phone" required>
                                     </div>
 
                                     <div class="form-group m-form__group additional-info">
-                                        <select class="form-control" name="dept" id="dept">
-                                            <option value="" disabled selected>DEPARTEMEN</option>
-                                            <option value="Sekolah Minggu">Sekolah Minggu</option>
-                                            <option value="JC">JC</option>
-                                            <option value="Youth">Youth</option>
-                                            <option value="Dewasa Muda">Dewasa Muda</option>
-                                        </select>
+                                        <input class="form-control m-input" type="date" placeholder="TANGGAL LAHIR" name="dob" required>
                                     </div>
+
+                                    <div class="m-form__group form-group" style="margin-top: 1rem;">
+                                        <label for="">
+                                            M-CLASS
+                                        </label>
+                                        <div class="m-radio-inline">
+                                            <label class="m-radio">
+                                                <input type="radio" name="mclass" value="1" required>
+                                                SUDAH
+                                                <span></span>
+                                            </label>
+                                            <label class="m-radio">
+                                                <input type="radio" name="mclass" value="0">
+                                                BELUM
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group m-form__group additional-info">
                                         <select class="form-control" name="rayon" id="rayon">
-                                            <option value="" disabled selected>RAYON</option>
+                                            <option value="" disabled selected>TEMPAT IBADAH ASAL</option>
                                             <?php
                                                 foreach ($arrRayon as $key => $value) {
                                             ?>
@@ -140,12 +159,22 @@
                                             ?>
                                         </select>
                                     </div>
+
                                     <div class="form-group m-form__group additional-info">
-                                        <input class="form-control m-input" type="text" placeholder="Posisi" name="posisi" required>
+                                        <select class="form-control" name="rayon" id="rayon">
+                                            <option value="" disabled selected>PILIH IBADAH NATAL</option>
+                                            <?php
+                                                foreach ($arrIbadah as $key => $value) {
+                                            ?>
+                                                    <option value="<?php echo $value?>"><?php echo $value?></option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select>
                                     </div>
-                                    <div class="form-group m-form__group additional-info">
-                                        <input class="form-control m-input" type="text" placeholder="No.Telp/WA" name="phone" required>
-                                    </div>
+                                    
+                                    
+                                    
 
                                     <div class="m-login__form-action">
                                         <!-- <button type ="button" id ="check-btn" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" style="font-weight: 400">
