@@ -80,14 +80,14 @@
                         "Lainnya"
                         );
 
-            $arrIbadah = array ( "Aruna 08.00",
-                        "Aruna 10.30",
-                        "Aruna 15.00",
-                        "Aruna 17.30",
-                        "Baranangsiang 08.00",
-                        "Baranangsiang 10.30",
-                        "Baranangsiang 15.00",
-                        "Baranangsiang 17.30",
+            $arrIbadah = array ("Aruna 08.00 (0/1125)",
+                        "Aruna 10.30 (0/1125)",
+                        "Aruna 15.00 (0/1125)",
+                        "Aruna 17.30 (0/1125)",
+                        "Baranangsiang 08.00 (0/1325)",
+                        "Baranangsiang 10.30 (0/1325)",
+                        "Baranangsiang 15.00 (0/1325)",
+                        "Baranangsiang 17.30 (0/1325)",
                         );
         ?>
         <div class="m-grid m-grid--hor m-grid--root m-page">
@@ -114,7 +114,7 @@
                                     </div>
 
                                     <div class="form-group m-form__group additional-info">
-                                        <input class="form-control m-input" type="text" placeholder="Nama Lengkap" name="name" required>
+                                        <input class="form-control m-input" type="text" placeholder="Nama Lengkap" name="nama" required>
                                     </div>
 
                                     <div class="form-group m-form__group">
@@ -148,12 +148,12 @@
                                     </div>
 
                                     <div class="form-group m-form__group additional-info">
-                                        <select class="form-control" name="rayon" id="rayon">
+                                        <select class="form-control" name="ibadah_asal">
                                             <option value="" disabled selected>TEMPAT IBADAH ASAL</option>
                                             <?php
-                                                foreach ($arrRayon as $key => $value) {
+                                                foreach ($ibadah_asal as $data) {
                                             ?>
-                                                    <option value="<?php echo $value?>"><?php echo $value?></option>
+                                                    <option value="<?php echo $data->id?>"><?php echo $data->nama?></option>
                                             <?php
                                                 }
                                             ?>
@@ -161,12 +161,12 @@
                                     </div>
 
                                     <div class="form-group m-form__group additional-info">
-                                        <select class="form-control" name="rayon" id="rayon">
+                                        <select class="form-control" name="ibadah">
                                             <option value="" disabled selected>PILIH IBADAH NATAL</option>
                                             <?php
-                                                foreach ($arrIbadah as $key => $value) {
+                                                foreach ($ibadah as $data) {
                                             ?>
-                                                    <option value="<?php echo $value?>"><?php echo $value?></option>
+                                                    <option value="<?php echo $data->id?>"><?php echo $data->nama?> (??/<?php echo $data->qty ?>)</option>
                                             <?php
                                                 }
                                             ?>

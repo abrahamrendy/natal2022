@@ -190,7 +190,7 @@
     </div>
 
 
-    <div class="row">
+    <div>
         <div class="col-sm-10 pt-4">
             <a class="float-right btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" style="font-weight: 400" href="#" data-toggle="modal" data-target="#login-modal">Login</a>
         </div>
