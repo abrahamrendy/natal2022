@@ -104,13 +104,13 @@
                                         <b>GBI SUKAWARNA<br>CHRISTMAS 2022</b><br>REGISTRATION
                                     </h3>
                                 </div>
-                                <form class="m-login__form m-form" action="{{ route('register') }}" method="POST" id="register-form">
+                                <form class="m-login__form m-form" action="{{ route('submit') }}" method="POST" id="register-form">
                                     @csrf
 
                                     <input type="hidden" name="existed_id">
 
                                     <div class="form-group m-form__group additional-info">
-                                        <input class="form-control m-input" type="text" placeholder="No. KAJ" name="kaj" required>
+                                        <input class="form-control m-input" type="text" placeholder="No. KAJ" name="kaj">
                                     </div>
 
                                     <div class="form-group m-form__group additional-info">

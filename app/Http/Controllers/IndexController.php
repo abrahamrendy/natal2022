@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DNS2D;
+use Storage;
 
 class IndexController extends Controller
 {
@@ -45,36 +46,40 @@ class IndexController extends Controller
 
         $countUser = DB::table('registrant')->where('ibadah',$ibadah)->count();
 
-        $existedUser = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->where('registrant.name',$nama)->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'ibadah.*')->first();
+        $existedUser = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->where('registrant.nama',$nama)->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'ibadah.*')->first();
 
         if (!empty($existedUser)) {
-            return view('fail', ['code' => 0, 'name' => $existedUser->registrant_name,'ibadah' => ($existedUser->name .' '. $existedUser->time), 'data' => $existedUser, 'id' => ($existedUser->registrant_id)]);
+            return view('fail', ['code' => 0, 'name' => $existedUser->registrant_name,'ibadah' => ($existedUser->nama .' '. $existedUser->time), 'data' => $existedUser, 'id' => ($existedUser->registrant_id)]);
         }
 
         if ($countUser >= ($getService->qty)) {
             // USER EXCEEDED CAPACITY
             return view('fail', ['code' => 1]);
         } else {
-
             $id = DB::table('registrant')->insertGetId(
                                                 ['kaj' => $kaj,
                                                  'nama' => $nama,
                                                  'email' => $email,
                                                  'phone' => $phone,
                                                  'dob' => $dob,
-                                                 'm_class' => $m_class,
+                                                 'm-class' => $m_class,
                                                  'ibadah_asal' => $ibadah_asal,
                                                  'ibadah' => $ibadah,
                                                  'created_at' => $created_at,
                                                 ] );
-            $current_timestamp = strtotime($create_date);
-            $firstChar = substr($email, 0, 1);
-            $combine = strtoupper($firstChar).$id.'-'.$current_timestamp;
-
             if ($id) {
+                if ($kaj != '') {
+                    $combine = $kaj;
+                } else {
+                    $combine = date('Y', strtotime('now + 7 hours')).$ibadah_asal.$id;
+                }
+                DB::table('registrant')->where('id',$id)->update(
+                                                                        [
+                                                                         'qr_code' => $combine
+                                                                        ] );
                 Storage::disk('public')->put('qrcodes/'.$combine.'.jpg',base64_decode(DNS2D::getBarcodePNG($combine, "QRCODE", 10,10)));
                 // SET UP EMAIL
-                $this->registEmail($email, $attend_date, $temp_service, $nama, $id, $combine);
+                // $this->registEmail($email, $attend_date, $temp_service, $nama, $id, $combine);
                 return view('success', ['data' => $getService, 'id' => $id, 'name' => $nama, 'attend_date' => $attend_date]);
             } else {
                 // GENERIC ERROR MESSAGE

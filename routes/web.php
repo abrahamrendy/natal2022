@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::post('/submit', [App\Http\Controllers\IndexController::class, 'submit'])->name('submit');
 
 Auth::routes();
 
