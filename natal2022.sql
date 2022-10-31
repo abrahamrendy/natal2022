@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2022 at 07:02 AM
+-- Generation Time: Oct 31, 2022 at 04:22 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -36,6 +36,77 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ibadah`
+--
+
+CREATE TABLE `ibadah` (
+  `id` int(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ibadah`
+--
+
+INSERT INTO `ibadah` (`id`, `nama`, `qty`, `created_at`) VALUES
+(1, 'Aruna 08.00', 1125, '2022-10-25 10:14:44'),
+(2, 'Aruna 10.30', 1125, '2022-10-25 10:14:44'),
+(3, 'Aruna 15.00', 1125, '2022-10-25 10:14:44'),
+(4, 'Aruna 17.30', 1125, '2022-10-25 10:14:44'),
+(5, 'Baranangsiang 08.00', 1325, '2022-10-25 10:14:44'),
+(6, 'Baranangsiang 10.30', 1325, '2022-10-25 10:14:44'),
+(7, 'Baranangsiang 15.00', 1325, '2022-10-25 10:14:44'),
+(8, 'Baranangsiang 17.30', 1325, '2022-10-25 10:14:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ibadah_asal`
+--
+
+CREATE TABLE `ibadah_asal` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ibadah_asal`
+--
+
+INSERT INTO `ibadah_asal` (`id`, `nama`, `created_at`) VALUES
+(1, 'Aruna 1', '2022-10-25 10:17:25'),
+(2, 'Aruna 2', '2022-10-25 10:17:25'),
+(3, 'Aruna 3', '2022-10-25 10:17:25'),
+(4, 'Aruna 4', '2022-10-25 10:17:25'),
+(5, 'Aruna 5', '2022-10-25 10:17:25'),
+(6, 'Baranangsiang 1', '2022-10-25 10:17:25'),
+(7, 'Baranangsiang 2', '2022-10-25 10:17:25'),
+(8, 'Baranangsiang 3', '2022-10-25 10:17:25'),
+(9, 'Baranangsiang 4', '2022-10-25 10:17:25'),
+(10, 'Baranangsiang 5', '2022-10-25 10:17:25'),
+(11, 'Gedebage', '2022-10-25 10:17:25'),
+(12, 'Regency 1', '2022-10-25 10:17:25'),
+(13, 'Regency 2', '2022-10-25 10:17:25'),
+(14, 'Regency 3', '2022-10-25 10:17:25'),
+(15, 'Regency 4', '2022-10-25 10:17:25'),
+(16, 'Regency 5', '2022-10-25 10:17:25'),
+(17, 'Regency 4', '2022-10-25 10:17:25'),
+(18, 'Regency 5', '2022-10-25 10:17:25'),
+(19, 'Piset 1', '2022-10-25 10:17:25'),
+(20, 'Piset 2', '2022-10-25 10:17:25'),
+(21, 'Piset 3', '2022-10-25 10:17:25'),
+(22, 'Soekarno Hatta 1', '2022-10-25 10:17:25'),
+(23, 'Soekarno Hatta 2', '2022-10-25 10:17:25'),
+(24, 'Soekarno Hatta 3', '2022-10-25 10:17:25'),
+(25, 'Yello', '2022-10-25 10:17:25'),
+(26, 'Lainnya', '2022-10-25 10:17:25');
 
 -- --------------------------------------------------------
 
@@ -93,6 +164,27 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `registrant`
+--
+
+CREATE TABLE `registrant` (
+  `id` int(50) NOT NULL,
+  `kaj` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `dob` date NOT NULL,
+  `m-class` tinyint(1) NOT NULL DEFAULT 0,
+  `ibadah_asal` int(11) NOT NULL,
+  `ibadah` int(11) NOT NULL,
+  `qr_code` varchar(255) DEFAULT NULL,
+  `attend` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -126,6 +218,18 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `ibadah`
+--
+ALTER TABLE `ibadah`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ibadah_asal`
+--
+ALTER TABLE `ibadah_asal`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -146,6 +250,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `registrant`
+--
+ALTER TABLE `registrant`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -163,6 +273,18 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `ibadah`
+--
+ALTER TABLE `ibadah`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `ibadah_asal`
+--
+ALTER TABLE `ibadah_asal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -173,6 +295,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `registrant`
+--
+ALTER TABLE `registrant`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
