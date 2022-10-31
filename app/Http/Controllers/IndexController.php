@@ -79,7 +79,7 @@ class IndexController extends Controller
                                                                         ] );
                 Storage::disk('public')->put('qrcodes/'.$combine.'.jpg',base64_decode(DNS2D::getBarcodePNG($combine, "QRCODE", 10,10)));
                 // SET UP EMAIL
-                // $this->registEmail($email, $attend_date, $temp_service, $nama, $id, $combine);
+                // $this->registEmail($email, $getService, $id, $combine);
                 return view('success', ['data' => $getService, 'id' => $id, 'name' => $nama, 'attend_date' => $attend_date]);
             } else {
                 // GENERIC ERROR MESSAGE
@@ -89,7 +89,7 @@ class IndexController extends Controller
         }
     }
 
-    public function registEmail ($to, $date, $data, $name, $id, $code) {
+    public function registEmail ($to, $ibadah, $id, $code) {
         $subject = 'GBI Sukawarna Christmas Celebration Service Confirmation';
         $htmlBody = '<table width=700px style="background-color:#07121E; padding:40px 40px">';
         $htmlBody .= '<tr>
@@ -110,12 +110,12 @@ class IndexController extends Controller
                                                 <br><br><p> 
                                                 <h1 style="word-break: break-word;color: #fff !important">No.urut: '.$id.'</h1> 
                                                 <h1 style="word-break: break-word;color: #fff !important">Terima Kasih, '.$name.'</h1>
-                                                <h3 style="word-break: break-word; font-weight: normal;color: #fff !important">Anda telah terdaftar untuk mengikuti ibadah onsite.</h3>
-                                                <h1 style="word-break: break-word;color: #fff !important">GBI Sukawarna '.$data->name.'</h1> 
-                                                <h3 style="word-break: break-word; font-weight: normal; font-style: italic;color: #fff !important">'.$data->address.'</h3> 
-                                                <h3 style="word-break: break-word; font-weight: normal; font-style: italic;color: #fff !important">'.$date.', '.$data->time.'</h3> 
+                                                <h3 style="word-break: break-word; font-weight: normal;color: #fff !important">Anda telah terdaftar untuk mengikuti ibadah natal GBI Sukawarna.</h3>
+                                                <h1 style="word-break: break-word;color: #fff !important">'.$ibadah->name.'</h1>
                                                 <h3 style="word-break: break-word; font-weight: normal; font-style: italic;color: #fff !important">Informasi: '.$data->contact_person.'</h3> 
-                                                <h3 style="word-break: break-word; font-weight: normal;color: #fff !important">Mohon membawa tanda bukti pengenalan diri (KAJ/KTP/SIM) sehingga tim kami dapat mengkonfirmasi kehadiran anda.</h3> 
+                                                <hr>
+                                                <img src="'.asset("img/qrcodes/".$code.".jpg").'"></img>
+                                                <h3 style="word-break: break-word; font-weight: normal;color: #fff !important">Mohon membawa QR-Code ini saat daftar ulang sehingga tim kami dapat mengkonfirmasi kehadiran anda.</h3> 
                                                 </p>
                                             </td>
                                         </tr>
