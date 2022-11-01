@@ -49,12 +49,12 @@ class IndexController extends Controller
         $existedUser = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->where('registrant.nama',$nama)->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'ibadah.*')->first();
 
         if (!empty($existedUser)) {
-            return view('fail', ['code' => 0, 'name' => $existedUser->registrant_name,'ibadah' => ($existedUser->nama .' '. $existedUser->time), 'data' => $existedUser, 'id' => ($existedUser->registrant_id)]);
+            return view('fail', ['code' => 0, 'data' => $getService]);
         }
 
         if ($countUser >= ($getService->qty)) {
             // USER EXCEEDED CAPACITY
-            return view('fail', ['code' => 1]);
+            return view('fail', ['code' => 1, 'data' => $getService]);
         } else {
             $id = DB::table('registrant')->insertGetId(
                                                 ['kaj' => $kaj,
@@ -68,11 +68,19 @@ class IndexController extends Controller
                                                  'created_at' => $created_at,
                                                 ] );
             if ($id) {
+
                 if ($kaj != '') {
                     $combine = $kaj;
                 } else {
-                    $combine = date('Y', strtotime('now + 7 hours')).$ibadah_asal.$id;
+                    $ibadahAsal = DB::table('ibadah_asal')->where('id', $ibadah_asal)->first();
+                    $counterUp = $ibadahAsal->counter + 1;
+                    $combine = date('Y', strtotime('now + 7 hours')).$ibadah_asal.$counterUp;
+                    DB::table('ibadah_asal')->where('id',$ibadah_asal)->update(
+                                                                        [
+                                                                         'counter' => $counterUp
+                                                                        ] );
                 }
+                
                 DB::table('registrant')->where('id',$id)->update(
                                                                         [
                                                                          'qr_code' => $combine
@@ -80,10 +88,10 @@ class IndexController extends Controller
                 Storage::disk('public')->put('qrcodes/'.$combine.'.jpg',base64_decode(DNS2D::getBarcodePNG($combine, "QRCODE", 10,10)));
                 // SET UP EMAIL
                 // $this->registEmail($email, $getService, $id, $combine);
-                return view('success', ['data' => $getService, 'id' => $id, 'name' => $nama, 'attend_date' => $attend_date]);
+                return view('success', ['data' => $getService, 'id' => $id, 'name' => $nama, 'code' => $combine]);
             } else {
                 // GENERIC ERROR MESSAGE
-                return view('fail', ['code' => 0]);
+                return view('fail', ['code' => 0, 'data' => $getService]);
             }
 
         }
@@ -111,8 +119,8 @@ class IndexController extends Controller
                                                 <h1 style="word-break: break-word;color: #fff !important">No.urut: '.$id.'</h1> 
                                                 <h1 style="word-break: break-word;color: #fff !important">Terima Kasih, '.$name.'</h1>
                                                 <h3 style="word-break: break-word; font-weight: normal;color: #fff !important">Anda telah terdaftar untuk mengikuti ibadah natal GBI Sukawarna.</h3>
-                                                <h1 style="word-break: break-word;color: #fff !important">'.$ibadah->name.'</h1>
-                                                <h3 style="word-break: break-word; font-weight: normal; font-style: italic;color: #fff !important">Informasi: '.$data->contact_person.'</h3> 
+                                                <h1 style="word-break: break-word;color: #fff !important">'.$ibadah->nama.'</h1>
+                                                <h3 style="word-break: break-word; font-weight: normal; font-style: italic;color: #fff !important">Informasi: +'.$ibadah->contact_person.'</h3> 
                                                 <hr>
                                                 <img src="'.asset("img/qrcodes/".$code.".jpg").'"></img>
                                                 <h3 style="word-break: break-word; font-weight: normal;color: #fff !important">Mohon membawa QR-Code ini saat daftar ulang sehingga tim kami dapat mengkonfirmasi kehadiran anda.</h3> 

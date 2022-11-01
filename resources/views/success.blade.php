@@ -57,7 +57,10 @@
                                     <?php if (isset($code)) {?>
                                         Berikut ini adalah QR Code anda, anda dapat <span style="font-weight: 700">menyimpan</span> QR-Code ini ke dalam perangkat anda dan anda harus <span style="font-weight: 700">membawa</span> QR-Code ini untuk melakukan <span style="font-weight: 700">DAFTAR ULANG</span> di konter registrasi saat acara natal berlangsung.
                                         <br><br>
-                                        <img src="<?php echo asset('img/qrcodes/'.$code.'.jpg'); ?>"></img>
+                                        <div style="background-color: white; padding: 10px">
+                                            <img src="<?php echo asset('img/qrcodes/'.$code.'.jpg'); ?>"></img>
+                                            <div>{{$code}}</div>
+                                        </div>
                                         <br><br>
                                     <?php } ?>
                                     <!-- We will send you a confirmation email. Please wait a while and check your inbox.
@@ -65,9 +68,9 @@
  -->
                                     <!-- <br><br> -->
 
-                                    Untuk informasi lebih jelas, anda dapat menghubungi kontak di bawah ini:
+                                    Untuk informasi lebih lanjut, anda dapat menghubungi kontak di bawah ini:
                                     <br>
-                                    <a href="https://wa.me/628996012319" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> (+62) 8996012319</a>
+                                    <a href="https://wa.me/{{$data->contact_person}}" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> +{{$data->contact_person}}</a>
 
                                     <br><br>
                                     <span style="font-weight: 500; font-size: 1.7rem">Tuhan Yesus memberkati!</span>

@@ -69,7 +69,7 @@
                                     <br>
                                     Jika pesan ini tetap muncul, anda dapat menghubungi kontak di bawah ini:
                                     <br>
-                                    <a href="https://wa.me/628996012319" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> (+62) 8996012319</a>
+                                    <a href="https://wa.me/{{$data->contact_person}}" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> +{{$data->contact_person}}</a>
                                 </div>
                             </div>
                         </div>
