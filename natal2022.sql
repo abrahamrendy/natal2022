@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2022 at 04:22 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Generation Time: Nov 01, 2022 at 11:31 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,6 +47,7 @@ CREATE TABLE `ibadah` (
   `id` int(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `qty` int(11) NOT NULL,
+  `contact_person` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -54,15 +55,15 @@ CREATE TABLE `ibadah` (
 -- Dumping data for table `ibadah`
 --
 
-INSERT INTO `ibadah` (`id`, `nama`, `qty`, `created_at`) VALUES
-(1, 'Aruna 08.00', 1125, '2022-10-25 10:14:44'),
-(2, 'Aruna 10.30', 1125, '2022-10-25 10:14:44'),
-(3, 'Aruna 15.00', 1125, '2022-10-25 10:14:44'),
-(4, 'Aruna 17.30', 1125, '2022-10-25 10:14:44'),
-(5, 'Baranangsiang 08.00', 1325, '2022-10-25 10:14:44'),
-(6, 'Baranangsiang 10.30', 1325, '2022-10-25 10:14:44'),
-(7, 'Baranangsiang 15.00', 1325, '2022-10-25 10:14:44'),
-(8, 'Baranangsiang 17.30', 1325, '2022-10-25 10:14:44');
+INSERT INTO `ibadah` (`id`, `nama`, `qty`, `contact_person`, `created_at`) VALUES
+(1, 'Aruna 08.00', 1125, '628122046786', '2022-10-25 10:14:44'),
+(2, 'Aruna 10.30', 1125, '628122046786', '2022-10-25 10:14:44'),
+(3, 'Aruna 15.00', 1125, '628122046786', '2022-10-25 10:14:44'),
+(4, 'Aruna 17.30', 1125, '628122046786', '2022-10-25 10:14:44'),
+(5, 'Baranangsiang 08.00', 1325, '6281802254520', '2022-10-25 10:14:44'),
+(6, 'Baranangsiang 10.30', 1325, '6281802254520', '2022-10-25 10:14:44'),
+(7, 'Baranangsiang 15.00', 1325, '6281802254520', '2022-10-25 10:14:44'),
+(8, 'Baranangsiang 17.30', 1325, '6281802254520', '2022-10-25 10:14:44');
 
 -- --------------------------------------------------------
 
@@ -73,6 +74,7 @@ INSERT INTO `ibadah` (`id`, `nama`, `qty`, `created_at`) VALUES
 CREATE TABLE `ibadah_asal` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
+  `counter` int(11) DEFAULT 0,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -80,33 +82,33 @@ CREATE TABLE `ibadah_asal` (
 -- Dumping data for table `ibadah_asal`
 --
 
-INSERT INTO `ibadah_asal` (`id`, `nama`, `created_at`) VALUES
-(1, 'Aruna 1', '2022-10-25 10:17:25'),
-(2, 'Aruna 2', '2022-10-25 10:17:25'),
-(3, 'Aruna 3', '2022-10-25 10:17:25'),
-(4, 'Aruna 4', '2022-10-25 10:17:25'),
-(5, 'Aruna 5', '2022-10-25 10:17:25'),
-(6, 'Baranangsiang 1', '2022-10-25 10:17:25'),
-(7, 'Baranangsiang 2', '2022-10-25 10:17:25'),
-(8, 'Baranangsiang 3', '2022-10-25 10:17:25'),
-(9, 'Baranangsiang 4', '2022-10-25 10:17:25'),
-(10, 'Baranangsiang 5', '2022-10-25 10:17:25'),
-(11, 'Gedebage', '2022-10-25 10:17:25'),
-(12, 'Regency 1', '2022-10-25 10:17:25'),
-(13, 'Regency 2', '2022-10-25 10:17:25'),
-(14, 'Regency 3', '2022-10-25 10:17:25'),
-(15, 'Regency 4', '2022-10-25 10:17:25'),
-(16, 'Regency 5', '2022-10-25 10:17:25'),
-(17, 'Regency 4', '2022-10-25 10:17:25'),
-(18, 'Regency 5', '2022-10-25 10:17:25'),
-(19, 'Piset 1', '2022-10-25 10:17:25'),
-(20, 'Piset 2', '2022-10-25 10:17:25'),
-(21, 'Piset 3', '2022-10-25 10:17:25'),
-(22, 'Soekarno Hatta 1', '2022-10-25 10:17:25'),
-(23, 'Soekarno Hatta 2', '2022-10-25 10:17:25'),
-(24, 'Soekarno Hatta 3', '2022-10-25 10:17:25'),
-(25, 'Yello', '2022-10-25 10:17:25'),
-(26, 'Lainnya', '2022-10-25 10:17:25');
+INSERT INTO `ibadah_asal` (`id`, `nama`, `counter`, `created_at`) VALUES
+(1, 'Aruna 1', 1, '2022-10-25 10:17:25'),
+(2, 'Aruna 2', 0, '2022-10-25 10:17:25'),
+(3, 'Aruna 3', 0, '2022-10-25 10:17:25'),
+(4, 'Aruna 4', 0, '2022-10-25 10:17:25'),
+(5, 'Aruna 5', 0, '2022-10-25 10:17:25'),
+(6, 'Baranangsiang 1', 0, '2022-10-25 10:17:25'),
+(7, 'Baranangsiang 2', 0, '2022-10-25 10:17:25'),
+(8, 'Baranangsiang 3', 0, '2022-10-25 10:17:25'),
+(9, 'Baranangsiang 4', 0, '2022-10-25 10:17:25'),
+(10, 'Baranangsiang 5', 0, '2022-10-25 10:17:25'),
+(11, 'Gedebage', 0, '2022-10-25 10:17:25'),
+(12, 'Regency 1', 0, '2022-10-25 10:17:25'),
+(13, 'Regency 2', 0, '2022-10-25 10:17:25'),
+(14, 'Regency 3', 0, '2022-10-25 10:17:25'),
+(15, 'Regency 4', 0, '2022-10-25 10:17:25'),
+(16, 'Regency 5', 0, '2022-10-25 10:17:25'),
+(17, 'Regency 4', 0, '2022-10-25 10:17:25'),
+(18, 'Regency 5', 0, '2022-10-25 10:17:25'),
+(19, 'Piset 1', 0, '2022-10-25 10:17:25'),
+(20, 'Piset 2', 0, '2022-10-25 10:17:25'),
+(21, 'Piset 3', 0, '2022-10-25 10:17:25'),
+(22, 'Soekarno Hatta 1', 0, '2022-10-25 10:17:25'),
+(23, 'Soekarno Hatta 2', 0, '2022-10-25 10:17:25'),
+(24, 'Soekarno Hatta 3', 0, '2022-10-25 10:17:25'),
+(25, 'Yello', 0, '2022-10-25 10:17:25'),
+(26, 'Lainnya', 0, '2022-10-25 10:17:25');
 
 -- --------------------------------------------------------
 
@@ -169,7 +171,7 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `registrant` (
   `id` int(50) NOT NULL,
-  `kaj` int(11) NOT NULL,
+  `kaj` int(11) DEFAULT NULL,
   `nama` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
@@ -181,6 +183,18 @@ CREATE TABLE `registrant` (
   `attend` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `registrant`
+--
+
+INSERT INTO `registrant` (`id`, `kaj`, `nama`, `email`, `phone`, `dob`, `m-class`, `ibadah_asal`, `ibadah`, `qr_code`, `attend`, `created_at`) VALUES
+(1, 1234, 'Abraham Rendy Hermawan', 'aeroponse@gmail.com', '08986806006', '2022-11-23', 0, 15, 6, '1234', 0, '2022-11-01 09:57:37'),
+(2, 1234124, '12341', 'aeroponse@gmail.com', '08986806006', '2022-11-24', 0, 15, 6, '1234124', 0, '2022-11-01 09:58:44'),
+(3, NULL, 'asda', 'aeroponse@gmail.com', '08986806006', '2022-11-03', 0, 17, 6, '2022173', 0, '2022-11-01 10:07:33'),
+(4, NULL, 'asdf', 'aeroponse@gmail.com', '08986806006', '2022-11-13', 0, 13, 5, '2022134', 0, '2022-11-01 10:19:17'),
+(5, NULL, 'asdafs', 'aeroponse@gmail.com', '08986806006', '2022-11-29', 0, 16, 5, '2022165', 0, '2022-11-01 10:19:50'),
+(6, NULL, 'asdfzxc', '1234@1234.com', '08986806006', '2022-11-06', 1, 1, 4, '202211', 0, '2022-11-01 15:15:04');
 
 -- --------------------------------------------------------
 
@@ -300,7 +314,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `registrant`
 --
 ALTER TABLE `registrant`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
