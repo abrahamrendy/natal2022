@@ -20,6 +20,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::post('/submit', [App\Http\Controllers\IndexController::class, 'submit'])->name('submit');
 
+
+// Route::post('/login_user', [App\Http\Controllers\UserController::class, 'login'])->name('login_user');
+
+Route::prefix('user')->group(function () {
+    Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('user')->middleware('checkuserlogin');
+    Route::post('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login_user')->middleware('checkuserlogin');
+    Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout_user');
+});
+
 Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

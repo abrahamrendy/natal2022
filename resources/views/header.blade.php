@@ -166,7 +166,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-            <form class="m-login__form m-form" action="{{ route('register') }}" method="POST" id="register-form">
+            <form class="m-login__form m-form" action="{{ route('login_user') }}" method="POST">
                 <div class="modal-body">
                     @csrf
 
@@ -192,7 +192,15 @@
 
     <div>
         <div class="col-sm-10 pt-4">
-            <a class="float-right btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" style="font-weight: 400" href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+            <?php 
+                if (session('currUser')) {
+                    $currUser = session('currUser');
+            ?>
+                    <a href="{{ route ('user')}}" class = "float-right btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" style="font-weight: 400" href="#">Hi, {{ $currUser->nama }}!</a>
+                    <a href="{{ route ('index')}}" class = "float-right btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air" style="font-weight: 400; margin-right: 10px;" href="#">HOME</a>
+            <?php } else { ?>
+                    <a class="float-right btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" style="font-weight: 400" href="#" data-toggle="modal" data-target="#login-modal">LOGIN</a>
+            <?php } ?>
         </div>
     </div>
 </body>

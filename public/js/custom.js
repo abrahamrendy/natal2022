@@ -49,23 +49,23 @@ $(document).ready(function() {
 	// 	}
 	// });
 
-	$("#register-form").submit(function(e) {
-	    // var isValid = $(e.target).parents('form').isValid();
-	    // e.preventDefault();
-	    var dept = $('select[name="dept"]').val();
-	    var rayon = $('select[name="rayon"]').val();
-	    if (dept == "" || dept == null || rayon == "" || rayon == null) {
-	    	alert('Please fill in the Dept/Rayon fields.');
-	    	return false;
-	    }
+	// $("#register-form").submit(function(e) {
+	//     // var isValid = $(e.target).parents('form').isValid();
+	//     // e.preventDefault();
+	//     var dept = $('select[name="dept"]').val();
+	//     var rayon = $('select[name="rayon"]').val();
+	//     if (dept == "" || dept == null || rayon == "" || rayon == null) {
+	//     	alert('Please fill in the Dept/Rayon fields.');
+	//     	return false;
+	//     }
 
-	    return true;
+	//     return true;
 
-	    // if (!isValid) {
-	    // 	console.log('asdf');
-	    // 	e.preventDefault(); //prevent the default action
-    	// }
-	});
+	//     // if (!isValid) {
+	//     // 	console.log('asdf');
+	//     // 	e.preventDefault(); //prevent the default action
+ //    	// }
+	// });
 
 	$(".date").on("change", function() {
 	    this.setAttribute(

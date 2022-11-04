@@ -52,44 +52,6 @@
                 content: "";
               }
         </style>
-        <?php
-            $arrRayon = array ("Aruna 1", 
-                        "Aruna 2",
-                        "Aruna 3",
-                        "Aruna 4",
-                        "Aruna 5",
-                        "Baranangsiang 1",
-                        "Baranangsiang 2",
-                        "Baranangsiang 3",
-                        "Baranangsiang 4",
-                        "Baranangsiang 5",
-                        "Gedebage",
-                        "Regency 1",
-                        "Regency 2",
-                        "Regency 3",
-                        "Regency 4",
-                        "Regency 5",
-                        "Piset 1",
-                        "Piset 2",
-                        "Piset 3",
-                        "Soekarno Hatta 1",
-                        "Soekarno Hatta 2",
-                        "Soekarno Hatta 3",
-                        "Soekarno Hatta 4",
-                        "Yello",
-                        "Lainnya"
-                        );
-
-            $arrIbadah = array ("Aruna 08.00 (0/1125)",
-                        "Aruna 10.30 (0/1125)",
-                        "Aruna 15.00 (0/1125)",
-                        "Aruna 17.30 (0/1125)",
-                        "Baranangsiang 08.00 (0/1325)",
-                        "Baranangsiang 10.30 (0/1325)",
-                        "Baranangsiang 15.00 (0/1325)",
-                        "Baranangsiang 17.30 (0/1325)",
-                        );
-        ?>
         <div class="m-grid m-grid--hor m-grid--root m-page">
             <div class="m-login m-login--singin  m-login--5" id="m_login" >
                 <div class="m-login__wrapper-2 m-portlet-full-height">
@@ -104,7 +66,7 @@
                                         <b>GBI SUKAWARNA<br>CHRISTMAS 2022</b><br>REGISTRATION
                                     </h3>
                                 </div>
-                                <form class="m-login__form m-form" action="{{ route('submit') }}" method="POST" id="register-form">
+                                <form class="m-login__form m-form" action="{{ route('submit') }}" method="POST">
                                     @csrf
 
                                     <input type="hidden" name="existed_id">

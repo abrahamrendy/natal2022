@@ -93,6 +93,11 @@
                         "Baranangsiang 17.30",
                         );
         ?>
+         @if (session('user'))
+             <div class="alert alert-success">
+                <?php print_r(session('user'))?>
+             </div>
+        @endif
     <!-- end::Body -->
     <body class="m-page--wide m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
         <!-- begin:: Page -->
@@ -129,10 +134,10 @@
                                                 </div> -->
                                                 <div class="m-card-profile__details">
                                                     <span class="m-card-profile__name">
-                                                        Mark Andre
+                                                        {{ $currUser->nama }}
                                                     </span>
                                                     <a href="" class="m-card-profile__email m-link">
-                                                        mark.andre@gmail.com
+                                                        {{ $currUser->email }}
                                                     </a>
                                                 </div>
                                             </div>
@@ -144,7 +149,7 @@
                                                     </span>
                                                 </li>
                                                 <li class="m-nav__item">
-                                                    <a href="header/profile&amp;demo=default.html" class="m-nav__link">
+                                                    <a href="{{ route ('user')}}" class="m-nav__link">
                                                         <i class="m-nav__link-icon flaticon-profile-1"></i>
                                                         <span class="m-nav__link-title">
                                                             <span class="m-nav__link-wrap">
@@ -156,7 +161,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="m-nav__item">
-                                                    <a href="header/profile&amp;demo=default.html" class="m-nav__link">
+                                                    <a href="{{ route ('logout_user')}}" class="m-nav__link">
                                                         <i class="m-nav__link-icon flaticon-lifebuoy"></i>
                                                         <span class="m-nav__link-text">
                                                             Log Out
@@ -266,7 +271,25 @@
                                         <div class="m-portlet__head">
                                             <div class="m-portlet__head-tools">
                                                 <ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
-                                                    <li class="nav-item m-tabs__item">
+                                                    <?php 
+                                                        $i = 1;
+                                                        foreach ($user as $key) {
+                                                            if ($i == 1) {
+                                                                $a = 'nav-link m-tabs__link active';
+                                                            } else {
+                                                                $a = 'nav-link m-tabs__link';
+                                                            }
+                                                    ?>
+                                                        <li class="nav-item m-tabs__item">
+                                                            <a class="{{ $a }}" data-toggle="tab" href="#m_user_profile_tab_{{ $i }}" role="tab">
+                                                                <i class="flaticon-share m--hide"></i>
+                                                                {{ $key->nama }}
+                                                            </a>
+                                                        </li>
+                                                    <?php
+                                                        $i++;
+                                                    }?>
+                                                    <!-- <li class="nav-item m-tabs__item">
                                                         <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
                                                             <i class="flaticon-share m--hide"></i>
                                                             Nama Lengkap
@@ -276,7 +299,7 @@
                                                         <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">
                                                             Nama Lengkap 2
                                                         </a>
-                                                    </li>
+                                                    </li> -->
                                                 </ul>
                                             </div>
                                         </div>
