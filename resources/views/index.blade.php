@@ -52,7 +52,7 @@
                 content: "";
               }
         </style>
-        <div class="m-grid m-grid--hor m-grid--root m-page">
+        <div class="m-grid m-grid--hor m-grid--root m-page m-body">
             <div class="m-login m-login--singin  m-login--5" id="m_login" >
                 <div class="m-login__wrapper-2 m-portlet-full-height">
                     <div class="m-login__contanier">

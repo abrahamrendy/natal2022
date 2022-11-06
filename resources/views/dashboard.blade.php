@@ -13,6 +13,7 @@
             .qr-codes {
                 background-color: white;
                 padding: 10px;
+                width: 70%;
             }
 
             .left-side-bg {
@@ -43,6 +44,18 @@
                      background-repeat: no-repeat;
                      height: 60vw;
                 }
+
+                .m-container {
+                    width: 100%;
+                }
+
+                .qr-code {
+                    width: 100%;
+                }
+
+                .qr-code-container {
+                    text-align: center;
+                }
             }
 
               input[type="date"]:before {
@@ -55,48 +68,10 @@
                 content: "";
               }
         </style>
-    <?php
-            $arrRayon = array ("Aruna 1", 
-                        "Aruna 2",
-                        "Aruna 3",
-                        "Aruna 4",
-                        "Aruna 5",
-                        "Baranangsiang 1",
-                        "Baranangsiang 2",
-                        "Baranangsiang 3",
-                        "Baranangsiang 4",
-                        "Baranangsiang 5",
-                        "Gedebage",
-                        "Regency 1",
-                        "Regency 2",
-                        "Regency 3",
-                        "Regency 4",
-                        "Regency 5",
-                        "Piset 1",
-                        "Piset 2",
-                        "Piset 3",
-                        "Soekarno Hatta 1",
-                        "Soekarno Hatta 2",
-                        "Soekarno Hatta 3",
-                        "Soekarno Hatta 4",
-                        "Yello",
-                        "Lainnya"
-                        );
-
-            $arrIbadah = array ( "Aruna 08.00",
-                        "Aruna 10.30",
-                        "Aruna 15.00",
-                        "Aruna 17.30",
-                        "Baranangsiang 08.00",
-                        "Baranangsiang 10.30",
-                        "Baranangsiang 15.00",
-                        "Baranangsiang 17.30",
-                        );
-        ?>
          @if (session('user'))
-             <div class="alert alert-success">
+             <!-- <div class="alert alert-success">
                 <?php print_r(session('user'))?>
-             </div>
+             </div> -->
         @endif
     <!-- end::Body -->
     <body class="m-page--wide m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
@@ -289,201 +264,118 @@
                                                     <?php
                                                         $i++;
                                                     }?>
-                                                    <!-- <li class="nav-item m-tabs__item">
-                                                        <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
-                                                            <i class="flaticon-share m--hide"></i>
-                                                            Nama Lengkap
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item m-tabs__item">
-                                                        <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">
-                                                            Nama Lengkap 2
-                                                        </a>
-                                                    </li> -->
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="m_user_profile_tab_1">
-                                                <form class="m-form m-form--fit m-form--label-align-right">
-                                                    <div class="m-portlet__body">
-                                                        <div class="form-group m-form__group m--margin-top-10 m--hide">
-                                                            <div class="alert m-alert m-alert--default" role="alert">
-                                                                The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <div class="col-lg-10 ml-auto">
-                                                                <h3 class="m-form__section">
-                                                                    1. Data Pribadi
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                No. KAJ
-                                                            </label>
-                                                            <div class="col-lg-7">
-                                                                <input class="form-control m-input" type="text" value="123456">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                Nama Lengkap
-                                                            </label>
-                                                            <div class="col-lg-7">
-                                                                <input class="form-control m-input" type="text" value="Mark Andre">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                No.HP/WA
-                                                            </label>
-                                                            <div class="col-lg-7">
-                                                                <input class="form-control m-input" type="text" value="+456669067890">
-                                                            </div>
-                                                        </div>
-                                                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-                                                        <div class="form-group m-form__group row">
-                                                            <div class="col-lg-10 ml-auto">
-                                                                <h3 class="m-form__section">
-                                                                    2. QR Code
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                            </label>
-                                                            <div class="col-lg-10">
-                                                                <img class="qr-codes" src="{{asset('img/qrcodes/A1-1614661378.png')}}" width="50%" alt=""/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                Ibadah
-                                                            </label>
-                                                            <div class="col-lg-7">
-                                                                <select class="form-control" name="rayon" id="rayon">
-                                                                    <option value="" disabled selected>PILIH IBADAH NATAL</option>
-                                                                    <?php
-                                                                        foreach ($arrIbadah as $key => $value) {
-                                                                    ?>
-                                                                            <option value="<?php echo $value?>"><?php echo $value?></option>
-                                                                    <?php
-                                                                        }
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-portlet__foot m-portlet__foot--fit">
-                                                        <div class="m-form__actions">
-                                                            <div class="row">
-                                                                <div class="col-2"></div>
-                                                                <div class="col-7">
-                                                                    <button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">
-                                                                        Save changes
-                                                                    </button>
-                                                                    &nbsp;&nbsp;
-                                                                    <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
-                                                                        Cancel
-                                                                    </button>
+                                            <?php
+                                                $i = 1;
+                                                foreach ($user as $key) {
+                                                    if ($i == 1) {
+                                                        $active = 'active show';
+                                                    } else {
+                                                        $active = '';
+                                                    }
+                                            ?>
+                                                    <div class="tab-pane {{$active}} fade" id="m_user_profile_tab_{{$i}}">
+                                                        <form class="m-form m-form--fit m-form--label-align-right">
+                                                            <div class="m-portlet__body">
+                                                                <div class="form-group m-form__group m--margin-top-10 m--hide">
+                                                                    <div class="alert m-alert m-alert--default" role="alert">
+                                                                        The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-lg-10 ml-auto">
+                                                                        <h3 class="m-form__section">
+                                                                            1. Data Pribadi
+                                                                        </h3>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                        No. KAJ
+                                                                    </label>
+                                                                    <div class="col-lg-7">
+                                                                        <input class="form-control m-input" type="text" value="{{$key->kaj}}" disabled>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                        Nama Lengkap
+                                                                    </label>
+                                                                    <div class="col-lg-7">
+                                                                        <input class="form-control m-input" type="text" value="{{$key->nama}}" disabled>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                        No.HP/WA
+                                                                    </label>
+                                                                    <div class="col-lg-7">
+                                                                        <input class="form-control m-input" type="text" value="{{$key->phone}}" disabled>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <div class="col-lg-10 ml-auto">
+                                                                        <h3 class="m-form__section">
+                                                                            2. QR Code
+                                                                        </h3>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                    </label>
+                                                                    <div class="col-lg-10 qr-code-container">
+                                                                        <img class="qr-code" src="{{asset('img/qrcodes/'.$key->qr_code.'.jpg')}}" alt=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-form__group row">
+                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                        Ibadah
+                                                                    </label>
+                                                                    <div class="col-lg-7">
+                                                                        <select class="form-control" name="rayon" id="rayon">
+                                                                            <option value="" disabled>PILIH IBADAH NATAL</option>
+                                                                            <?php
+                                                                                foreach ($ibadah as $data) {
+                                                                                    if ($data->id == $key->ibadah) {
+                                                                                        $selected = 'selected';
+                                                                                    } else {
+                                                                                        $selected = '';
+                                                                                    }
+                                                                            ?>
+                                                                                    <option value="<?php echo $data->id?>" {{$selected}}><?php echo $data->nama?> (??/<?php echo $data->qty ?>)</option>
+                                                                            <?php
+                                                                                }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane" id="m_user_profile_tab_2">
-                                                <form class="m-form m-form--fit m-form--label-align-right">
-                                                    <div class="m-portlet__body">
-                                                        <div class="form-group m-form__group m--margin-top-10 m--hide">
-                                                            <div class="alert m-alert m-alert--default" role="alert">
-                                                                The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <div class="col-lg-10 ml-auto">
-                                                                <h3 class="m-form__section">
-                                                                    1. Data Pribadi
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                No. KAJ
-                                                            </label>
-                                                            <div class="col-lg-7">
-                                                                <input class="form-control m-input" type="text" value="123456">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                Nama Lengkap
-                                                            </label>
-                                                            <div class="col-lg-7">
-                                                                <input class="form-control m-input" type="text" value="Mark Andre 2">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                No.HP/WA
-                                                            </label>
-                                                            <div class="col-lg-7">
-                                                                <input class="form-control m-input" type="text" value="+456669067890">
-                                                            </div>
-                                                        </div>
-                                                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-                                                        <div class="form-group m-form__group row">
-                                                            <div class="col-lg-10 ml-auto">
-                                                                <h3 class="m-form__section">
-                                                                    2. QR Code
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                            </label>
-                                                            <div class="col-lg-10">
-                                                                <img src="{{asset('img/qrcodes/A1-1614661378.png')}}" width="50%" alt=""/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group m-form__group row">
-                                                            <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                Ibadah
-                                                            </label>
-                                                            <div class="col-lg-7">
-                                                                <select class="form-control" name="rayon" id="rayon">
-                                                                    <option value="" disabled selected>PILIH IBADAH NATAL</option>
-                                                                    <?php
-                                                                        foreach ($arrIbadah as $key => $value) {
-                                                                    ?>
-                                                                            <option value="<?php echo $value?>"><?php echo $value?></option>
-                                                                    <?php
-                                                                        }
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-portlet__foot m-portlet__foot--fit">
-                                                        <div class="m-form__actions">
-                                                            <div class="row">
-                                                                <div class="col-2"></div>
-                                                                <div class="col-7">
-                                                                    <button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">
-                                                                        Save changes
-                                                                    </button>
-                                                                    &nbsp;&nbsp;
-                                                                    <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
-                                                                        Cancel
-                                                                    </button>
+                                                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                                                <div class="m-form__actions">
+                                                                    <div class="row">
+                                                                        <div class="col-2"></div>
+                                                                        <div class="col-7">
+                                                                            <button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                                                                                Save changes
+                                                                            </button>
+                                                                            &nbsp;&nbsp;
+                                                                            <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
+                                                                                Cancel
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </form>
                                                     </div>
-                                                </form>
-                                            </div>
+                                            <?php
+                                                    $i++;
+                                                }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>

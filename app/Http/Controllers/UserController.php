@@ -28,7 +28,8 @@ class UserController extends Controller
     {
         $user = session('user');
         $currUser = session('currUser');
-        return view('dashboard', ['user'=>$user, 'currUser' => $currUser]);
+        $ibadah = DB::table('ibadah')->get();
+        return view('dashboard', ['user'=>$user, 'currUser' => $currUser, 'ibadah'=>$ibadah]);
     }
 
     public function login(Request $request)
