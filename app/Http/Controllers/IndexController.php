@@ -27,7 +27,8 @@ class IndexController extends Controller
     public function index()
     {
         $ibadah_asal = DB::table('ibadah_asal')->get();
-        $ibadah = DB::table('ibadah')->get();
+        // $ibadah = DB::table('ibadah')->get();
+        $ibadah = DB::select('SELECT id, nama, qty, IFNULL(t.ct, 0) as ct FROM ibadah LEFT OUTER JOIN (SELECT ibadah, count(id) as ct FROM `registrant` GROUP BY ibadah) as t ON ibadah.id = t.ibadah');
         return view('index',['ibadah_asal'=>$ibadah_asal, 'ibadah'=>$ibadah]);
     }
 
@@ -46,7 +47,7 @@ class IndexController extends Controller
 
         $countUser = DB::table('registrant')->where('ibadah',$ibadah)->count();
 
-        $existedUser = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->where('registrant.nama',$nama)->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'ibadah.*')->first();
+        $existedUser = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->where('registrant.nama', $nama)->where('registrant.dob', $dob)->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'ibadah.*')->first();
 
         if (!empty($existedUser)) {
             return view('fail', ['code' => 0, 'data' => $getService]);

@@ -73,6 +73,9 @@
 
                                     <div class="form-group m-form__group additional-info">
                                         <input class="form-control m-input" type="text" placeholder="No. KAJ" name="kaj">
+                                        <span class="m-form__help">
+                                            * KOSONGKAN BILA BELUM MEMILIKI KAJ
+                                        </span>
                                     </div>
 
                                     <div class="form-group m-form__group additional-info">
@@ -128,7 +131,7 @@
                                             <?php
                                                 foreach ($ibadah as $data) {
                                             ?>
-                                                    <option value="<?php echo $data->id?>"><?php echo $data->nama?> (??/<?php echo $data->qty ?>)</option>
+                                                    <option value="<?php echo $data->id?>"><?php echo $data->nama?> ({{$data->ct}}/<?php echo $data->qty ?>)</option>
                                             <?php
                                                 }
                                             ?>

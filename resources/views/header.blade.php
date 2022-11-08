@@ -177,7 +177,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" type="password" placeholder="Tanggal Lahir (DDMMYYYY)" name="password" required>
+                        <input class="form-control" type="password" placeholder="Tanggal Lahir (DD-MM-YYYY)" name="password" required>
                     </div>
                 </div>
                 <div class="modal-footer">

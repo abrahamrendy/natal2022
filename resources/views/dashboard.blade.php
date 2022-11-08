@@ -329,6 +329,7 @@
                                                                     </label>
                                                                     <div class="col-lg-10 qr-code-container">
                                                                         <img class="qr-code" src="{{asset('img/qrcodes/'.$key->qr_code.'.jpg')}}" alt=""/>
+                                                                        <div>{{$key->qr_code}}</div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group m-form__group row">
@@ -346,7 +347,7 @@
                                                                                         $selected = '';
                                                                                     }
                                                                             ?>
-                                                                                    <option value="<?php echo $data->id?>" {{$selected}}><?php echo $data->nama?> (??/<?php echo $data->qty ?>)</option>
+                                                                                    <option value="<?php echo $data->id?>" {{$selected}}><?php echo $data->nama?> ({{$data->ct}}/<?php echo $data->qty ?>)</option>
                                                                             <?php
                                                                                 }
                                                                             ?>

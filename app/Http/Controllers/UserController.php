@@ -28,7 +28,7 @@ class UserController extends Controller
     {
         $user = session('user');
         $currUser = session('currUser');
-        $ibadah = DB::table('ibadah')->get();
+        $ibadah = DB::select('SELECT id, nama, qty, IFNULL(t.ct, 0) as ct FROM ibadah LEFT OUTER JOIN (SELECT ibadah, count(id) as ct FROM `registrant` GROUP BY ibadah) as t ON ibadah.id = t.ibadah');
         return view('dashboard', ['user'=>$user, 'currUser' => $currUser, 'ibadah'=>$ibadah]);
     }
 

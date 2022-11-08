@@ -52,13 +52,14 @@
                         <div class="m-login__signin">
                             <div class="m-login__head">
                                 <div class="m-login__title">
-                                    <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">TERIMA KASIH<br><span style="font-size: 1.7rem; font-weight: 500; color: #453939">Data anda telah berhasil diinput!</span></span>
+                                    <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">TERIMA KASIH.<br><span style="font-size: 1.7rem; font-weight: 500; color: #453939">Data anda telah berhasil diinput!</span></span>
                                     <br><br>
                                     <?php if (isset($code)) {?>
                                         Berikut ini adalah QR Code anda, anda dapat <span style="font-weight: 700">menyimpan</span> QR-Code ini ke dalam perangkat anda dan anda harus <span style="font-weight: 700">membawa</span> QR-Code ini untuk melakukan <span style="font-weight: 700">DAFTAR ULANG</span> di konter registrasi saat acara natal berlangsung.
                                         <br><br>
                                         <div style="background-color: white; padding: 10px">
                                             <img src="<?php echo asset('img/qrcodes/'.$code.'.jpg'); ?>"></img>
+                                            <div>{{$name}}</div>
                                             <div>{{$code}}</div>
                                         </div>
                                         <br><br>
