@@ -68,10 +68,10 @@
                 content: "";
               }
         </style>
-         @if (session('user'))
-             <!-- <div class="alert alert-success">
-                <?php print_r(session('user'))?>
-             </div> -->
+         @if (session('success'))
+             <!-- <div class="alert alert-success"> -->
+                <?php //print_r(session('user'))?>
+             <!-- </div> -->
         @endif
     <!-- end::Body -->
     <body class="m-page--wide m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
@@ -267,120 +267,122 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="tab-content">
-                                            <?php
-                                                $i = 1;
-                                                foreach ($user as $key) {
-                                                    if ($i == 1) {
-                                                        $active = 'active show';
-                                                    } else {
-                                                        $active = '';
-                                                    }
-                                            ?>
-                                                    <div class="tab-pane {{$active}} fade" id="m_user_profile_tab_{{$i}}">
-                                                        <form class="m-form m-form--fit m-form--label-align-right" method="POST" action="{{route('submit_edit')}}">
-                                                            <div class="m-portlet__body">
-                                                                @csrf
-                                                                <input type="hidden" value="{{$key->id}}" name="user_id[]">
-                                                                <div class="form-group m-form__group m--margin-top-10 m--hide">
-                                                                    <div class="alert m-alert m-alert--default" role="alert">
-                                                                        The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                                        <form method="POST" action="{{route('submit_edit')}}">
+                                            <div class="tab-content">
+                                                <?php
+                                                    $i = 1;
+                                                    foreach ($user as $key) {
+                                                        if ($i == 1) {
+                                                            $active = 'active show';
+                                                        } else {
+                                                            $active = '';
+                                                        }
+                                                ?>
+                                                        <div class="tab-pane {{$active}} fade" id="m_user_profile_tab_{{$i}}">
+                                                            <div class="m-form m-form--fit m-form--label-align-right">
+                                                                <div class="m-portlet__body">
+                                                                    @csrf
+                                                                    <input type="hidden" value="{{$key->id}}" name="user_id[]">
+                                                                    <div class="form-group m-form__group m--margin-top-10 m--hide">
+                                                                        <div class="alert m-alert m-alert--default" role="alert">
+                                                                            The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group m-form__group row">
-                                                                    <div class="col-lg-10 ml-auto">
-                                                                        <h3 class="m-form__section">
-                                                                            1. Data Pribadi
-                                                                        </h3>
+                                                                    <div class="form-group m-form__group row">
+                                                                        <div class="col-lg-10 ml-auto">
+                                                                            <h3 class="m-form__section">
+                                                                                1. Data Pribadi
+                                                                            </h3>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group m-form__group row">
-                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                        No. KAJ
-                                                                    </label>
-                                                                    <div class="col-lg-7">
-                                                                        <input class="form-control m-input" type="text" value="{{$key->kaj}}" disabled>
+                                                                    <div class="form-group m-form__group row">
+                                                                        <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                            No. KAJ
+                                                                        </label>
+                                                                        <div class="col-lg-7">
+                                                                            <input class="form-control m-input" type="text" value="{{$key->kaj}}" disabled>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group m-form__group row">
-                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                        Nama Lengkap
-                                                                    </label>
-                                                                    <div class="col-lg-7">
-                                                                        <input class="form-control m-input" type="text" value="{{$key->nama}}" disabled>
+                                                                    <div class="form-group m-form__group row">
+                                                                        <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                            Nama Lengkap
+                                                                        </label>
+                                                                        <div class="col-lg-7">
+                                                                            <input class="form-control m-input" type="text" value="{{$key->nama}}" disabled>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group m-form__group row">
-                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                        No.HP/WA
-                                                                    </label>
-                                                                    <div class="col-lg-7">
-                                                                        <input class="form-control m-input" type="text" value="{{$key->phone}}" disabled>
+                                                                    <div class="form-group m-form__group row">
+                                                                        <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                            No.HP/WA
+                                                                        </label>
+                                                                        <div class="col-lg-7">
+                                                                            <input class="form-control m-input" type="text" value="{{$key->phone}}" disabled>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-                                                                <div class="form-group m-form__group row">
-                                                                    <div class="col-lg-10 ml-auto">
-                                                                        <h3 class="m-form__section">
-                                                                            2. QR Code
-                                                                        </h3>
+                                                                    <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                                                                    <div class="form-group m-form__group row">
+                                                                        <div class="col-lg-10 ml-auto">
+                                                                            <h3 class="m-form__section">
+                                                                                2. QR Code
+                                                                            </h3>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group m-form__group row">
-                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                    </label>
-                                                                    <div class="col-lg-10 qr-code-container">
-                                                                        <img class="qr-code" src="{{asset('img/qrcodes/'.$key->qr_code.'.jpg')}}" alt=""/>
-                                                                        <div>{{$key->qr_code}}</div>
+                                                                    <div class="form-group m-form__group row">
+                                                                        <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                        </label>
+                                                                        <div class="col-lg-10 qr-code-container">
+                                                                            <img class="qr-code" src="{{asset('img/qrcodes/'.$key->qr_code.'.jpg')}}" alt=""/>
+                                                                            <div>{{$key->qr_code}}</div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group m-form__group row">
-                                                                    <label for="example-text-input" class="col-lg-2 col-form-label">
-                                                                        Ibadah
-                                                                    </label>
-                                                                    <div class="col-lg-7">
-                                                                        <select class="form-control" name="ibadah[]">
-                                                                            <option value="" disabled>PILIH IBADAH NATAL</option>
-                                                                            <?php
-                                                                                foreach ($ibadah as $data) {
-                                                                                    if ($data->id == $key->ibadah) {
-                                                                                        $selected = 'selected';
-                                                                                    } else {
-                                                                                        $selected = '';
+                                                                    <div class="form-group m-form__group row">
+                                                                        <label for="example-text-input" class="col-lg-2 col-form-label">
+                                                                            Ibadah
+                                                                        </label>
+                                                                        <div class="col-lg-7">
+                                                                            <select class="form-control" name="ibadah[]">
+                                                                                <option value="" disabled>PILIH IBADAH NATAL</option>
+                                                                                <?php
+                                                                                    foreach ($ibadah as $data) {
+                                                                                        if ($data->id == $key->ibadah) {
+                                                                                            $selected = 'selected';
+                                                                                        } else {
+                                                                                            $selected = '';
+                                                                                        }
+                                                                                ?>
+                                                                                        <option value="<?php echo $data->id?>" {{$selected}}><?php echo $data->nama?> ({{$data->ct}}/<?php echo $data->qty ?>)</option>
+                                                                                <?php
                                                                                     }
-                                                                            ?>
-                                                                                    <option value="<?php echo $data->id?>" {{$selected}}><?php echo $data->nama?> ({{$data->ct}}/<?php echo $data->qty ?>)</option>
-                                                                            <?php
-                                                                                }
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                
-                                                        </form>
-                                                    </div>
-                                            <?php
-                                                    $i++;
-                                                }
-                                            ?>
-                                            <div class="m-portlet__foot m-portlet__foot--fit">
-                                                                <div class="m-form__actions">
-                                                                    <div class="row">
-                                                                        <div class="col-2"></div>
-                                                                        <div class="col-7">
-                                                                            <button type="submit" class="btn btn-accent m-btn m-btn--air m-btn--custom">
-                                                                                Save changes
-                                                                            </button>
-                                                                            &nbsp;&nbsp;
-                                                                            <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
-                                                                                Cancel
-                                                                            </button>
+                                                                                ?>
+                                                                            </select>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                    
                                                             </div>
-                                        </div>
+                                                        </div>
+                                                <?php
+                                                        $i++;
+                                                    }
+                                                ?>
+                                            </div>
+                                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                                <div class="m-form__actions">
+                                                    <div class="row">
+                                                        <div class="col-2"></div>
+                                                        <div class="col-7">
+                                                            <button type="submit" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                                                                Save changes
+                                                            </button>
+                                                            &nbsp;&nbsp;
+                                                            <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
+                                                                Cancel
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

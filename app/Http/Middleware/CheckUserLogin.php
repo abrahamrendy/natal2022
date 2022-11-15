@@ -27,9 +27,8 @@ class CheckUserLogin
             $getUser = DB::table('registrant')->where('email', $email)->where('dob',$dob)->first();
 
             if (!empty($getUser)) {
-                $temp = DB::table('registrant')->where('email', $email)->get();
                 $request->session()->put('currUser',$getUser);
-                $request->session()->put('user',$temp);
+                $request->session()->put('user',$email);
                 return $next($request);
             }
         }
