@@ -278,8 +278,10 @@
                                                     }
                                             ?>
                                                     <div class="tab-pane {{$active}} fade" id="m_user_profile_tab_{{$i}}">
-                                                        <form class="m-form m-form--fit m-form--label-align-right">
+                                                        <form class="m-form m-form--fit m-form--label-align-right" method="POST" action="{{route('submit_edit')}}">
                                                             <div class="m-portlet__body">
+                                                                @csrf
+                                                                <input type="hidden" value="{{$key->id}}" name="user_id[]">
                                                                 <div class="form-group m-form__group m--margin-top-10 m--hide">
                                                                     <div class="alert m-alert m-alert--default" role="alert">
                                                                         The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
@@ -337,7 +339,7 @@
                                                                         Ibadah
                                                                     </label>
                                                                     <div class="col-lg-7">
-                                                                        <select class="form-control" name="rayon" id="rayon">
+                                                                        <select class="form-control" name="ibadah[]">
                                                                             <option value="" disabled>PILIH IBADAH NATAL</option>
                                                                             <?php
                                                                                 foreach ($ibadah as $data) {
@@ -355,12 +357,19 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                                
+                                                        </form>
+                                                    </div>
+                                            <?php
+                                                    $i++;
+                                                }
+                                            ?>
+                                            <div class="m-portlet__foot m-portlet__foot--fit">
                                                                 <div class="m-form__actions">
                                                                     <div class="row">
                                                                         <div class="col-2"></div>
                                                                         <div class="col-7">
-                                                                            <button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                                                                            <button type="submit" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                                                                                 Save changes
                                                                             </button>
                                                                             &nbsp;&nbsp;
@@ -371,12 +380,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </form>
-                                                    </div>
-                                            <?php
-                                                    $i++;
-                                                }
-                                            ?>
                                         </div>
                                     </div>
                                 </div>

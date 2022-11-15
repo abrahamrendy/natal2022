@@ -43,4 +43,10 @@ class UserController extends Controller
         return redirect('/')->with('success','Log out successful!');
     }
 
+    public function edit(Request $request) {
+        $ibadah = $request->input('ibadah');
+        $id = $request->input('user_id');
+        echo ($ibadah.', '.$id);
+    }
+
 }

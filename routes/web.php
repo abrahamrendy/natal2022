@@ -27,6 +27,7 @@ Route::prefix('user')->group(function () {
     Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('user')->middleware('checkuserlogin');
     Route::post('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login_user')->middleware('checkuserlogin');
     Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout_user');
+    Route::post('/submit_edit', [App\Http\Controllers\UserController::class, 'edit'])->name('submit_edit');
 });
 
 Auth::routes();
