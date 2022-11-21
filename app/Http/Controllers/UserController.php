@@ -40,29 +40,42 @@ class UserController extends Controller
 
     public function logout () {
         session()->flush();
-        return redirect('/')->with('success','Log out successful!');
+        return redirect('/')->with('success','Anda telah berhasil log out!');
     }
 
     public function edit(Request $request) {
         $ibadah = $request->input('ibadah');
         $id = $request->input('user_id');
+        $flag = false;
 
         for ($i=0; $i < count($id); $i++) {
             $tempId = $id[$i];
             $tempIbadah = $ibadah[$i];
             $existedUser = DB::table('registrant')->where('id', $tempId)->first();
+
             if (!empty($existedUser)) {
                if ($existedUser->ibadah != $tempIbadah) {
-                    DB::table('registrant')->where('id',$tempId)->update(
-                                                            [
-                                                             'ibadah' => $tempIbadah
-                                                            ] );
+                    $existedIbadah = DB::table('ibadah')->where('id', $tempIbadah)->first();
+                    $countUser = DB::table('registrant')->where('ibadah',$tempIbadah)->count();
+                    
+                    if ($countUser >= ($existedIbadah->qty)) {
+                        // FULL CAPACITY
+                        $flag = true;
+                    } else {
+                        DB::table('registrant')->where('id',$tempId)->update(
+                                                                            [
+                                                                             'ibadah' => $tempIbadah
+                                                                            ]);
+                    }
 
                }
             }
         }
-
-        return redirect('user/')->with('success','Edit successful!');
+        if ($flag) {
+            return redirect('user/')->with('fail','Anda melebihi kuota ibadah yang ditetapkan. Mohon memilih ibadah lain.');
+        } else {
+            return redirect('user/')->with('success','Berhasil melakukan edit ibadah!');
+        }
     }
 
 }

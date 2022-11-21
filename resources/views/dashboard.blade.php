@@ -68,19 +68,31 @@
                 content: "";
               }
         </style>
-         @if (session('success'))
-             <!-- <div class="alert alert-success"> -->
-                <?php //print_r(session('user'))?>
-             <!-- </div> -->
-        @endif
     <!-- end::Body -->
     <body class="m-page--wide m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
         <!-- begin:: Page -->
         <div class="m-grid m-grid--hor m-grid--root m-page">
             <!-- begin::Body -->
-            <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor-desktop m-grid--desktop m-body">
+            <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor-desktop m-grid--desktop m-body"> 
                 <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver    m-container m-container--responsive m-container--xxl m-page__container">
                     <div class="m-grid__item m-grid__item--fluid m-wrapper">
+                        @if($message = Session::get('success'))
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                              <strong>Berhasil!</strong> {{ $message }}
+                            </div>
+                        @endif
+
+                        @if($message = Session::get('fail'))
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                              <strong>Maaf.</strong> {{ $message }}
+                            </div>
+                        @endif
                         <!-- BEGIN: Subheader -->
                         <div class="m-subheader ">
                             <div class="d-flex align-items-center">
@@ -368,8 +380,8 @@
                                             </div>
                                             <div class="m-portlet__foot m-portlet__foot--fit">
                                                 <div class="m-form__actions">
-                                                    <div class="row">
-                                                        <div class="col-2"></div>
+                                                    <div class="row" style="padding: 25px 0px;">
+                                                        <div class="col-3" ></div>
                                                         <div class="col-7">
                                                             <button type="submit" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                                                                 Save changes

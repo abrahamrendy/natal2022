@@ -30,9 +30,11 @@ class CheckUserLogin
                 $request->session()->put('currUser',$getUser);
                 $request->session()->put('user',$email);
                 return $next($request);
+            } else {
+                return redirect('/')->with('fail','Email/Password salah.');
             }
         }
         // return $next($request);
-        return redirect('/')->with('error','Permission Denied! Please log in.');
+        return redirect('/')->with('fail','Akses ditolak! Mohon log in.');
     }
 }

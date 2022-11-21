@@ -54,8 +54,26 @@
         </style>
         <div class="m-grid m-grid--hor m-grid--root m-page m-body">
             <div class="m-login m-login--singin  m-login--5" id="m_login" >
+
                 <div class="m-login__wrapper-2 m-portlet-full-height">
                     <div class="m-login__contanier">
+                        @if($message = Session::get('success'))
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                              <strong>Berhasil!</strong> {{ $message }}
+                            </div>
+                        @endif
+
+                        @if($message = Session::get('fail'))
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                              <strong>Maaf.</strong> {{ $message }}
+                            </div>
+                        @endif
                         <div class="m-login__signin">
                             <?php
                                 $limit = false;
