@@ -53,10 +53,10 @@
                         <div class="m-login__signin">
                             <div class="m-login__head">
                                 <div class="m-login__title">
-                                    <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">MAAF!<br><span style="font-size: 1.7rem; font-weight: 500; color: #453939">Nama anda telah terdaftar sebelumnya!</span></span>
+                                    <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">MAAF!<br><span style="font-size: 2.2rem; font-weight: 500; color: #453939">Nama anda telah terdaftar sebelumnya!</span></span>
                                     <br><br> 
 
-                                     Anda dapat mengulang mendaftar dengan menggunakan data lain dengan menekan tombol di bawah ini. 
+                                     Anda dapat mendaftarkan peserta lain dengan menekan tombol di bawah ini. 
 
                                     <br><br>
                                     <div>
@@ -66,10 +66,10 @@
                                             </button>
                                         </a>
                                     </div>
-                                    <br>
+                                    <!-- <br>
                                     Jika pesan ini tetap muncul, anda dapat menghubungi kontak di bawah ini:
                                     <br>
-                                    <a href="https://wa.me/{{$data->contact_person}}" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> +{{$data->contact_person}}</a>
+                                    <a href="https://wa.me/{{$data->contact_person}}" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> +{{$data->contact_person}}</a> -->
                                 </div>
                             </div>
                         </div>
@@ -78,6 +78,7 @@
             </div>
         </div>
         <!-- end:: Page -->
+        @include('footer')
     </body>
 </html>
             

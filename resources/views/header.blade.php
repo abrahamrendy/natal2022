@@ -178,6 +178,9 @@
 
                     <div class="form-group">
                         <input class="form-control" type="password" placeholder="Tanggal Lahir (DD-MM-YYYY)" name="password" required>
+                        <span class="m-form__help">
+                            * CONTOH: 06-10-1994
+                        </span>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -97,7 +97,7 @@
                                     </div>
 
                                     <div class="form-group m-form__group additional-info">
-                                        <input class="form-control m-input" type="text" placeholder="Nama Lengkap" name="nama" required>
+                                        <input class="form-control m-input" type="text" placeholder="Nama Lengkap (Sesuai KTP)" name="nama" required>
                                     </div>
 
                                     <div class="form-group m-form__group">

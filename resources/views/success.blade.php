@@ -52,7 +52,7 @@
                         <div class="m-login__signin">
                             <div class="m-login__head">
                                 <div class="m-login__title">
-                                    <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">TERIMA KASIH.<br><span style="font-size: 1.7rem; font-weight: 500; color: #453939">Data anda telah berhasil diinput!</span></span>
+                                    <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">TERIMA KASIH.<br><span style="font-size: 2.2rem; font-weight: 500; color: #453939">Data anda telah berhasil diinput!</span></span>
                                     <br><br>
                                     <?php if (isset($code)) {?>
                                         Berikut ini adalah QR Code anda, anda dapat <span style="font-weight: 700">menyimpan</span> QR-Code ini ke dalam perangkat anda dan anda harus <span style="font-weight: 700">membawa</span> QR-Code ini untuk melakukan <span style="font-weight: 700">DAFTAR ULANG</span> di konter registrasi saat acara natal berlangsung.
@@ -61,20 +61,26 @@
                                             <img src="<?php echo asset('img/qrcodes/'.$code.'.jpg'); ?>"></img>
                                             <div>{{$name}}</div>
                                             <div>{{$code}}</div>
+                                            <br>
+                                            <?php
+                                                    $tempArr = explode(" ", $data->nama);
+                                            ?>
+                                            <div style="font-weight: 700">Tempat Ibadah: GBI Sukawarna cabang {{$tempArr[0]}}</div>
+                                            <div style="font-weight: 700">Jam Ibadah: {{$tempArr[1]}} </div>
                                         </div>
-                                        <br><br>
                                     <?php } ?>
                                     <!-- We will send you a confirmation email. Please wait a while and check your inbox.
                                     <br>(in some cases, it goes under <span style="font-weight: 700">Spam</span> or <span style="font-weight: 700">Junk</span> category).
  -->
                                     <!-- <br><br> -->
 
-                                    Untuk informasi lebih lanjut, anda dapat menghubungi kontak di bawah ini:
+                                    <!-- Untuk informasi lebih lanjut, anda dapat menghubungi kontak di bawah ini:
                                     <br>
                                     <a href="https://wa.me/{{$data->contact_person}}" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> +{{$data->contact_person}}</a>
 
-                                    <br><br>
-                                    <span style="font-weight: 500; font-size: 1.7rem">Tuhan Yesus memberkati!</span>
+                                    <br> -->
+                                    <br>
+                                    <span style="font-weight: 500; font-size: 2.2rem">Tuhan Yesus memberkati!</span>
 
                                     <br><br>
                                     <div style="padding-bottom: 5%">
@@ -92,6 +98,7 @@
             </div>
         </div>
         <!-- end:: Page -->
+        @include('footer')
     </body>
 </html>
             
