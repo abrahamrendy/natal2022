@@ -28,6 +28,11 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
+                        <th>E-mail</th>
+                        <th>No. HP</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Ibadah</th>
+                        <th>QR Code</th>
                         <th>Action</th>
                     </tr>
                   </thead>
@@ -37,11 +42,13 @@
                         if (isset($data)) {
                             foreach ($data as $item) {
                                 echo "<tr><td>".$ct."</td>";
-                                echo "<td>".$item->nama_pendeta."</td>";
-                                if (Auth::user()->roles == 1 || Auth::user()->roles == 3) {
-                                  echo '<td><button type="button" class="edit-btn btn btn-secondary btn-sm btn-block" data-toggle="modal" data-target="#edit-modal" data-id ="'.$item->id.'">Edit</button>
-                                        </td>';
-                                }
+                                echo "<td>".$item->registrant_name."</td>";
+                                echo "<td>".$item->email."</td>";
+                                echo "<td>".$item->phone."</td>";
+                                echo "<td>".$item->dob."</td>";
+                                echo "<td>".$item->nama."</td>";
+                                echo "<td style='text-align:center'><img src='".asset('img/qrcodes/'.$item->qr_code.'.jpg')."' width='50%' style='background-color:white; padding: 10px'></img></td>";
+                                echo "<td>"."</td>";
                                 echo '</tr>';
                                 $ct++;
                             }
@@ -52,9 +59,12 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <?php if (Auth::user()->roles == 1 || Auth::user()->roles == 3) {?>
-                          <th>Action</th>
-                        <?php } ?>
+                        <th>E-mail</th>
+                        <th>No. HP</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Ibadah</th>
+                        <th>QR Code</th>
+                        <th>Action</th>
                     </tr>
                   </tfoot>
                 </table>
