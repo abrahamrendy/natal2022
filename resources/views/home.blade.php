@@ -47,7 +47,7 @@
                                 echo "<td>".$item->phone."</td>";
                                 echo "<td>".$item->dob."</td>";
                                 echo "<td>".$item->nama."</td>";
-                                echo "<td style='text-align:center'><img src='".asset('img/qrcodes/'.$item->qr_code.'.jpg')."' width='50%' style='background-color:white; padding: 10px'></img></td>";
+                                echo "<td style='text-align:center'><img src='".asset('img/qrcodes/'.$item->qr_code.'.jpg')."' width='50%' style='background-color:white; padding: 10px' alt=".$item->qr_code."></img><br>".$item->qr_code."</td>";
                                 echo "<td>"."</td>";
                                 echo '</tr>';
                                 $ct++;
