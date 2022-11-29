@@ -32,6 +32,18 @@
                  background-repeat: no-repeat;
             }
 
+            .font-header2{
+                font-size: 2rem;
+            }
+
+            .font-text{
+                font-size: 1.5rem;
+            }
+
+            .font-header{
+                font-size: 2.2rem;
+            }
+
             @media (max-width: 768px) {
                 .left-side-bg {
                      background-position: center; 
@@ -52,13 +64,14 @@
                         <div class="m-login__signin">
                             <div class="m-login__head">
                                 <div class="m-login__title">
-                                    <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">TERIMA KASIH.<br><span style="font-size: 2.2rem; font-weight: 500; color: #453939">Data anda telah berhasil diinput!</span></span>
-                                    <br><br>
+                                    <span style="font-weight: 600; color: #F36E23" class="font-header">TERIMA KASIH.</span>
+                                    <br>
+                                    <div class="font-text">
                                     <?php if (isset($code)) {?>
-                                        Berikut ini adalah QR Code anda, anda dapat <span style="font-weight: 700">menyimpan</span> QR-Code ini ke dalam perangkat anda dan anda harus <span style="font-weight: 700">membawa</span> QR-Code ini untuk melakukan <span style="font-weight: 700">DAFTAR ULANG</span> di konter registrasi saat acara natal berlangsung.
+                                        Screenshot QR Code Registrasi ke dalam perangkat anda. QR code akan digunakan pada saat <span style="font-weight: 700">daftar ulang</span> di hari H.
                                         <br><br>
                                         <div style="background-color: white; padding: 10px">
-                                            <img src="<?php echo asset('img/qrcodes/'.$code.'.jpg'); ?>"></img>
+                                            <img src="<?php echo asset('img/qrcodes/'.$code.'.jpg'); ?>" width="35%"></img>
                                             <div>{{$name}}</div>
                                             <div>{{$code}}</div>
                                             <br>
@@ -69,18 +82,16 @@
                                             <div style="font-weight: 700">Jam Ibadah: {{$tempArr[1]}} </div>
                                         </div>
                                     <?php } ?>
-                                    <!-- We will send you a confirmation email. Please wait a while and check your inbox.
-                                    <br>(in some cases, it goes under <span style="font-weight: 700">Spam</span> or <span style="font-weight: 700">Junk</span> category).
- -->
-                                    <!-- <br><br> -->
-
-                                    <!-- Untuk informasi lebih lanjut, anda dapat menghubungi kontak di bawah ini:
+                                        <!-- <br>
+                                        Untuk informasi lebih lanjut, anda dapat menghubungi kontak di bawah ini:
+                                        <br>
+                                        <a href="https://wa.me/6282121678880" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> +6282121678880</a>
+                                        <br>
+                                        <a href="https://wa.me/6289670190055" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> +6289670190055</a>
+                                        <br> -->
+                                    </div>
                                     <br>
-                                    <a href="https://wa.me/{{$data->contact_person}}" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> +{{$data->contact_person}}</a>
-
-                                    <br> -->
-                                    <br>
-                                    <span style="font-weight: 500; font-size: 2.2rem">Tuhan Yesus memberkati!</span>
+                                    <span style="font-weight: 500; font-size: 2rem" class="font-header2">Tuhan Yesus memberkati!</span>
 
                                     <br><br>
                                     <div style="padding-bottom: 5%">
