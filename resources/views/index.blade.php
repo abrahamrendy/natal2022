@@ -171,19 +171,19 @@
                             <?php } else { ?>
                                 <div class="m-login__head">
                                     <div class="m-login__title">
-                                        <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">SORRY!<br></span>
+                                        <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">Mohon Maaf!<br></span>
                                         <br>
                                         <p style="font-size: 1.7rem; font-weight: 500">
-                                        We already reached the <span style="font-weight: 700; color: #F36E23">maximum quota</span> for balcony registration.
+                                        Pendaftaran kami <span style="font-weight: 700; color: #F36E23">tutup</span> sementara.
 
-                                        <br><br>
+                                        <!-- <br><br>
 
                                         Soon, we are going to open registration for <span style="font-weight: 700; color: #F36E23">1st floor</span>. 
                                         <br><br>
-                                        Please wait a moment.
+                                        Please wait a moment. -->
                                         </p>
                                         <br>
-                                        <span style="font-weight: 500; font-size: 1.7rem">God bless!</span>
+                                        <span style="font-weight: 500; font-size: 1.7rem">Tuhan Yesus memberkati!</span>
 
                                     </div>
                                 </div>
