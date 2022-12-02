@@ -76,7 +76,7 @@
                         @endif
                         <div class="m-login__signin">
                             <?php
-                                $limit = false;
+                                $limit = true;
                                 if (!$limit) {
                             ?>
                                 <div class="m-login__head">
