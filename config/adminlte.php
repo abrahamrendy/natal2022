@@ -295,6 +295,11 @@ return [
             'url'         => 'admin/',
             'icon'        => 'far fa-fw fa-file',
         ],
+        [
+            'text'        => 'Settings',
+            'url'         => 'admin/settings/',
+            'icon'        => 'far fa-fw fa-gear',
+        ],
         // // Navbar items:
         // [
         //     'type'         => 'navbar-search',

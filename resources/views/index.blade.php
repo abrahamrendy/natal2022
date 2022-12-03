@@ -76,7 +76,7 @@
                         @endif
                         <div class="m-login__signin">
                             <?php
-                                $limit = true;
+                                $limit = false;
                                 if (!$limit) {
                             ?>
                                 <div class="m-login__head">
@@ -148,9 +148,15 @@
                                             <option value="" disabled selected>PILIH IBADAH NATAL</option>
                                             <?php
                                                 foreach ($ibadah as $data) {
+                                                    if ($data->ct < $data->qty) {
                                             ?>
                                                     <option value="<?php echo $data->id?>"><?php echo $data->nama?> ({{$data->ct}}/<?php echo $data->qty ?>)</option>
                                             <?php
+                                                    } else {
+                                            ?>
+                                                    <option value="<?php echo $data->id?>" disabled><?php echo $data->nama?> ({{$data->ct}}/<?php echo $data->qty ?>)</option>
+                                            <?php
+                                                    }
                                                 }
                                             ?>
                                         </select>

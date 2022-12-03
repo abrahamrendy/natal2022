@@ -27,4 +27,21 @@ class HomeController extends Controller
         $data = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'registrant.*', 'ibadah.*')->orderBy('registrant.id', 'desc')->get();
         return view('home',['data'=>$data]);
     }
+
+    public function settings()
+    {
+        $data = DB::table('ibadah')->get();
+        return view('settings',['data'=>$data]);
+    }
+
+    public function submit_ibadah( Request $request ) {
+        $id = $request->input('id');
+        $qty = $request->input('qty');
+
+        DB::table('ibadah')->where('id',$id)->update(
+                                                    [
+                                                     'qty' => $qty
+                                                    ] );
+        return redirect('admin/settings/')->with('success','Berhasil melakukan edit ibadah!');
+    }
 }
