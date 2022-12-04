@@ -50,7 +50,7 @@ class IndexController extends Controller
         $existedUser = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->where('registrant.nama', $nama)->where('registrant.dob', $dob)->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'registrant.qr_code as qr_code', 'ibadah.*')->first();
 
         if (!empty($existedUser)) {
-            return view('fail', ['code' => 0, 'data' => $getService, 'user' => $existedUser]);
+            return view('fail', ['code' => 0, 'user' => $existedUser]);
         }
 
         if ($countUser >= ($getService->qty)) {

@@ -78,7 +78,7 @@
                                             <div>{{$user->qr_code}}</div>
                                             <br>
                                             <?php
-                                                    $tempArr = explode(" ", $data->nama);
+                                                    $tempArr = explode(" ", $user->nama);
                                             ?>
                                             <div style="font-weight: 700">Tempat Ibadah: GBI Sukawarna cabang {{$tempArr[0]}}</div>
                                             <div style="font-weight: 700">Jam Ibadah: {{$tempArr[1]}} </div>
@@ -95,10 +95,6 @@
                                             </button>
                                         </a>
                                     </div>
-                                    <!-- <br>
-                                    Jika pesan ini tetap muncul, anda dapat menghubungi kontak di bawah ini:
-                                    <br>
-                                    <a href="https://wa.me/{{$data->contact_person}}" target="_blank" style="font-weight: 700; color: #F36E23"><i class="fa fa-whatsapp" style="font-size: 1.7rem"></i> +{{$data->contact_person}}</a> -->
                                 </div>
                             </div>
                         </div>
