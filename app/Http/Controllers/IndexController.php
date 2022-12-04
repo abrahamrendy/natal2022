@@ -88,7 +88,7 @@ class IndexController extends Controller
                                                                         ] );
                 Storage::disk('public')->put('qrcodes/'.$combine.'.jpg',base64_decode(DNS2D::getBarcodePNG($combine, "QRCODE", 10,10)));
                 // SET UP EMAIL
-                $this->registEmail($email, $getService, $id, $combine);
+                $this->registEmail($email, $getService, $id, $combine,$nama);
                 return view('success', ['data' => $getService, 'id' => $id, 'name' => $nama, 'code' => $combine]);
             } else {
                 // GENERIC ERROR MESSAGE
@@ -98,7 +98,7 @@ class IndexController extends Controller
         }
     }
 
-    public function registEmail ($to, $ibadah, $id, $code) {
+    public function registEmail ($to, $ibadah, $id, $code,$name) {
         $subject = 'GBI Sukawarna Christmas Celebration Service Confirmation';
         $htmlBody = '<table width=700px style="background-color:#07121E; padding:40px 40px">';
         $htmlBody .= '<tr>
