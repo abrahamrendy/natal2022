@@ -47,10 +47,10 @@ class IndexController extends Controller
 
         $countUser = DB::table('registrant')->where('ibadah',$ibadah)->count();
 
-        $existedUser = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->where('registrant.nama', $nama)->where('registrant.dob', $dob)->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'ibadah.*')->first();
+        $existedUser = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->where('registrant.nama', $nama)->where('registrant.dob', $dob)->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'registrant.qr_code as qr_code', 'ibadah.*')->first();
 
         if (!empty($existedUser)) {
-            return view('fail', ['code' => 0, 'data' => $getService]);
+            return view('fail', ['code' => 0, 'data' => $getService, 'user' => $existedUser]);
         }
 
         if ($countUser >= ($getService->qty)) {
@@ -88,7 +88,7 @@ class IndexController extends Controller
                                                                         ] );
                 Storage::disk('public')->put('qrcodes/'.$combine.'.jpg',base64_decode(DNS2D::getBarcodePNG($combine, "QRCODE", 10,10)));
                 // SET UP EMAIL
-                $this->registEmail($email, $getService, $id, $combine,$nama);
+                // $this->registEmail($email, $getService, $id, $combine,$nama);
                 return view('success', ['data' => $getService, 'id' => $id, 'name' => $nama, 'code' => $combine]);
             } else {
                 // GENERIC ERROR MESSAGE

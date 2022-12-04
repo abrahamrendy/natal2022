@@ -25,6 +25,18 @@
         </style>
 
         <style type="text/css">
+            .font-header2{
+                font-size: 2rem;
+            }
+
+            .font-text{
+                font-size: 1.5rem;
+            }
+
+            .font-header{
+                font-size: 2.2rem;
+            }
+
             .left-side-bg {
                  background-position: center; 
                  background-size: 80%; 
@@ -54,7 +66,24 @@
                             <div class="m-login__head">
                                 <div class="m-login__title">
                                     <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">MAAF!<br><span style="font-size: 2.2rem; font-weight: 500; color: #453939">Nama anda telah terdaftar sebelumnya!</span></span>
-                                    <br><br> 
+                                    <br><br>
+
+                                    <div class="font-text">
+                                    <?php if (isset($user)) {?>
+                                        Screenshot QR Code Registrasi ke dalam perangkat anda. QR code akan digunakan pada saat <span style="font-weight: 700">daftar ulang</span> di hari H.
+                                        <br><br>
+                                        <div style="background-color: white; padding: 10px">
+                                            <img src="<?php echo asset('img/qrcodes/'.$user->qr_code.'.jpg'); ?>" width="35%"></img>
+                                            <div>{{$user->registrant_name}}</div>
+                                            <div>{{$user->qr_code}}</div>
+                                            <br>
+                                            <?php
+                                                    $tempArr = explode(" ", $data->nama);
+                                            ?>
+                                            <div style="font-weight: 700">Tempat Ibadah: GBI Sukawarna cabang {{$tempArr[0]}}</div>
+                                            <div style="font-weight: 700">Jam Ibadah: {{$tempArr[1]}} </div>
+                                        </div>
+                                    <?php } ?>
 
                                      Anda dapat mendaftarkan peserta lain dengan menekan tombol di bawah ini. 
 
