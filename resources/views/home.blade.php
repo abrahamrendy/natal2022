@@ -23,7 +23,7 @@
                       <strong>Success!</strong> {{ $message }}
                     </div>
                 @endif
-                <table id="example1" class=" table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                <table class=" table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                   <thead>
                     <tr>
                         <th>No</th>
@@ -68,6 +68,7 @@
                     </tr>
                   </tfoot>
                 </table>
+                {{ $data->links() }}
             </div>
         </div>
     </div>
