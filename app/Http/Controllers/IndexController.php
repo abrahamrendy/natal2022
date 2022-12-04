@@ -88,7 +88,7 @@ class IndexController extends Controller
                                                                         ] );
                 Storage::disk('public')->put('qrcodes/'.$combine.'.jpg',base64_decode(DNS2D::getBarcodePNG($combine, "QRCODE", 10,10)));
                 // SET UP EMAIL
-                // $this->registEmail($email, $getService, $id, $combine);
+                $this->registEmail($email, $getService, $id, $combine);
                 return view('success', ['data' => $getService, 'id' => $id, 'name' => $nama, 'code' => $combine]);
             } else {
                 // GENERIC ERROR MESSAGE
