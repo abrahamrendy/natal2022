@@ -65,7 +65,7 @@
                         <div class="m-login__signin">
                             <div class="m-login__head">
                                 <div class="m-login__title">
-                                    <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23">MAAF!<br><span style="font-size: 2.2rem; font-weight: 500; color: #453939">Nama anda telah terdaftar sebelumnya!</span></span>
+                                    <span style="font-weight: 600; font-size: 2.2rem; color: #F36E23"><br><span style="font-size: 2.2rem; font-weight: 500; color: #453939">Nama anda telah terdaftar sebelumnya!</span></span>
                                     <br><br>
 
                                     <div class="font-text">
