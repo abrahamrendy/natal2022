@@ -68,6 +68,7 @@
                     </tr>
                   </tfoot>
                 </table>
+                 Total records: {{ $data->total() }} 
                 {{ $data->links() }}
             </div>
         </div>
