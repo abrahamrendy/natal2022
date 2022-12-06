@@ -29,6 +29,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Qty</th>
+                        <th>Active</th>
                         <th>Action</th>
                     </tr>
                   </thead>
@@ -43,6 +44,11 @@
                     <?php
                                 echo "<td>".$item->nama."</td>";
                                 echo "<td><input type='text' name='qty' value=".$item->qty.">"."</input></td>";
+                                if ($item->status == 1) {
+                                    echo "<td style ='text-align:center'><input type='checkbox' name='status' value=1 checked></input></td>";
+                                } else {
+                                    echo "<td style ='text-align:center'><input type='checkbox' name='status' value=1></input></td>";
+                                }
                                 echo "<td style ='text-align:center'><button type = 'submit' class='btn btn-primary'>Submit"."</button></td>";
                                 echo "<input type='hidden' value=".$item->id." name='id'>";
                                 echo '</tr></form>';
@@ -56,6 +62,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Qty</th>
+                        <th>Active</th>
                         <th>Action</th>
                     </tr>
                   </tfoot>

@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'registrant.*', 'ibadah.*')->orderBy('registrant.id', 'desc')->paginate(25)->withQueryString();;
+        $data = DB::table('registrant')->join('ibadah', 'registrant.ibadah', '=', 'ibadah.id')->select('registrant.id as registrant_id', 'registrant.nama as registrant_name', 'registrant.*', 'ibadah.*')->orderBy('registrant.id', 'desc')->paginate(25)->withQueryString();
         return view('home',['data'=>$data]);
     }
 
@@ -37,10 +37,15 @@ class HomeController extends Controller
     public function submit_ibadah( Request $request ) {
         $id = $request->input('id');
         $qty = $request->input('qty');
+        $status = $request->input('status');
+        if ($status == null) {
+            $status = 0;
+        }
 
         DB::table('ibadah')->where('id',$id)->update(
                                                     [
-                                                     'qty' => $qty
+                                                     'qty' => $qty,
+                                                     'status' => $status
                                                     ] );
         return redirect('admin/settings/')->with('success','Berhasil melakukan edit ibadah!');
     }
