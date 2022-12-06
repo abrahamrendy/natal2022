@@ -30,7 +30,7 @@ class HomeController extends Controller
 
     public function settings()
     {
-        $data = DB::table('ibadah')->get();
+        $data = DB::table('ibadah')->orderBy('nama')->get();
         return view('settings',['data'=>$data]);
     }
 
