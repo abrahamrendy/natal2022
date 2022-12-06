@@ -35,7 +35,7 @@ class IndexController extends Controller
     public function submit(Request $request) {
         $kaj = $request->input('kaj');
         $nama = $request->input('nama');
-        $email = $request->input('email');
+        $email = strtolower($request->input('email'));
         $phone = $request->input('phone');
         $dob = date('Y-m-d', strtotime($request->input('dob')));
         $m_class = $request->input('mclass');

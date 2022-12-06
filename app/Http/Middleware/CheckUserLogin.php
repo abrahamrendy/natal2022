@@ -24,7 +24,7 @@ class CheckUserLogin
             $password = $request->password;
             $dob = date("Y-m-d", strtotime($password));
 
-            $getUser = DB::table('registrant')->where('email', $email)->where('dob',$dob)->first();
+            $getUser = DB::table('registrant')->whereRaw("UPPER(email) = '" . strtoupper($email) . "'")->where('dob',$dob)->first();
 
             if (!empty($getUser)) {
                 $request->session()->put('currUser',$getUser);
